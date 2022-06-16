@@ -52,6 +52,7 @@ export default function FormWithCustomHook() {
       </div>
 
         <button type="submit" className="btn btn-primary">Submit</button>
+        <button className="btn btn-primary" >Reset</button>
 
     </form>
   )

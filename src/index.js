@@ -1,11 +1,10 @@
 import ReactDOM from 'react-dom/client';
-import FormWithCustomHook from './components/02-useEffect/FormWithCustomHook';
-import SimpleForm from './components/02-useEffect/SimpleForm';
-import MultipleCustomHooks from './components/03-examples/MultipleCustomHooks';
-
+import './components/08-useReducer/intro-reducer';
+import { TodoApp } from './components/08-useReducer/TodoApp';
+import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <MultipleCustomHooks/>
+<TodoApp />
 );
 

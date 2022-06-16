@@ -13,6 +13,8 @@ export default function useForm( inicialState = {}) {
           });
     }
 
+    const onResetForm = () => setValues();
+
     return [ values, handleInputChange ];
 
 }

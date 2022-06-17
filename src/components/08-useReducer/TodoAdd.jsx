@@ -1,23 +1,41 @@
-import React from 'react'
-import { useRef } from 'react'
+import React from 'react';
+import useForm from '../../hooks/useForm';
 
-export const TodoAdd = ({handleNewTodo}) => {
+export const TodoAdd = ( {onNewTodo} ) => {
 
-    const inputRef = useRef();
+    const { description, onInputChange } = useForm({
+        description: ''
+    });
+
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+
+        if (description <= 1) return;
+
+        const newTodo = {
+            id: new Date().getTime(),
+            description,
+            done: false
+        }
+
+        onNewTodo(newTodo);
+    }
+
 
     return (
         <>
-            <form>
+            <form onSubmit={ onFormSubmit }>
                 <input
                     type="text"
                     placeholder="What to do?"
                     className="form-control"
-                    ref={inputRef}
+                    name="description"
+                    value={description}
+                    onChange={onInputChange}
                 />
                 <button
-                    type="button"
+                    type="submit"
                     className="btn btn-outline-primary mt-2"
-                    onClick={ () => handleNewTodo(inputRef.current.value) }
                 >
                     Add
                 </button>

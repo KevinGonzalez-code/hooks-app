@@ -2,19 +2,27 @@ import { useState } from "react";
 
 //Custom hook que se va encargar de manejar el formulario
 
-export default function useForm( inicialState = {}) {
+export default function useForm( initialForm = {}) {
 
-    const [values, setValues] = useState(inicialState);
+    const [ formState, setFormState ] = useState( initialForm );
 
-    const handleInputChange = ({target}) =>{
-        setValues({
-            ...values,
-            [ target.name ]: target.value      
-          });
+    const onInputChange = ({ target }) => {
+        const { name, value } = target;
+        setFormState({
+            ...formState,
+            [ name ]: value
+        });
     }
 
-    const onResetForm = () => setValues();
+    const onResetForm = () => {
+        setFormState( initialForm );
+    }
 
-    return [ values, handleInputChange ];
+    return {
+        ...formState,
+        formState,
+        onInputChange,
+        onResetForm
+    }
 
 }
